@@ -1,0 +1,163 @@
+/*body에 대한 css*/
+body{
+    color: rgba(255, 255, 255, 0.65);
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 13pt;
+    line-height: 1.65;
+}
+body {
+  background-color: #000;
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+
+.d-fullHeader{
+  margin-top: 20px;
+}
+/*button에 대한 css*/
+#log-button{
+  margin-left: 8px;
+}
+#schedule-button{
+  margin-right: 30px;
+}
+#signinbutton, #log-button, #sign-button, #continue-button, #schedule-button{
+  border-radius: 10px;
+}
+#signinbutton, #log-in, #sign-in, #continue, #schedule{
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: 200;
+  line-height: 1.65;
+  border-style: none;
+  display: inline-block;
+}
+.d-secondaryButton{
+    background-color: rgba(0,0,0,0.1);
+}
+body{
+    color: rgba(255, 255, 255, 0.65);
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 13pt;
+    line-height: 1.65;
+}
+body {
+  background-color: #000;
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+h1{
+    font-size: 2.5em;
+    font-weight: 200;
+    line-height: 68px;
+}
+
+.a-header{
+  display:inline-block;
+  margin-left: 30px;
+}
+.d-fullHeader{
+  display: inline-block;
+    margin-left: 30px;
+}
+#center{
+  text-align: center;
+  padding: 6em 0 4em 0;
+  margin-left: 25%;
+	height: 600px;
+}
+#center h1 {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.input_form{
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    width: 750px;
+
+    display: inline-block;
+    padding: 0.5em;
+    border: solid 1px rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  @media screen and (max-width: 1280px) {
+    #center {
+      padding: 4em 0 2em 0;
+    }
+
+  }
+  input {
+  	outline: none;
+  	border: none;
+  }
+  textarea {
+    outline: none;
+    border: none;
+  }
+  textarea:focus, input:focus {
+    border-color: transparent !important;
+  }
+
+  .wrap-input100 {
+    width: 790px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 17px;
+  }
+
+  .label-input100 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 58px;
+    height: 62px;
+     position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999999;
+  }
+
+
+  .input100 {
+    margin-left: 240px;
+    margin-top: 15px;
+    height: 62px;
+    padding: 0 20px 0 58px;
+    display: block;
+    width: 200px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background: transparent;
+    font-family: Oswald-Medium;
+    font-size: 15px;
+    color: #43383e;
+    line-height: 1.2;
+    padding: 0 5px;
+  }
+
+button{
+	height: 40px;
+}
+
+  input.input100 {
+    height: 62px;
+    padding: 0 20px 0 58px;
+  }
+
+  textarea.input100 {
+    min-height: 100px;
+    padding: 19px 20px 0 23px;
+  }

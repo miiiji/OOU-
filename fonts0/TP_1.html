@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Required meta tags -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./TP_2.css">
+
+    <title></title>
+  </head>
+  <body>
+    <!--header-->
+    <header>
+      <div class="d-fullHeader">
+        <!--sing-in button -->
+        <button type="button" class="d-secondaryButton" id="sign-button">
+           <div>
+             <a id="sign-in">sign in</a>
+           </div>
+       </button>
+         <!--log-in button -->
+       <button type="button" class="d-secondaryButton" id="log-button">
+          <div>
+            <a id="log-in">log in</a>
+          </div>
+      </button>
+      </div>
+      </header>
+      <!--main section -->
+      <section id="main">
+
+          <section id="center">
+            <!--h1 메인 화면에서 제일 중요하게 보여지는 부분을 나타냄 -->
+              <span class="avatar">
+                <h1>Get together with OOU<br />
+                OOU로 함께 모이자.</h1>
+              </span>
+            <!--각각 다른 화면으로 넘어가기위해서 구현 된 리스트형태들-->
+            <section id="icon">
+            <ul class="icons">
+              <!--스케줄 등록하려는 첫번 째 div -->
+            <div id="first">
+              <li ><a href="#" id="firsting" class="icon style2"><span class="label">스케줄 등록</span></a></li>
+            </div>
+              <!--미팅을 잡기위한 두 반째 div -->
+            <div id="second">
+                <!--내부에는 list 이며 다른 곳으로 넘어갈 수 있는 a태그 -->
+              <li ><a href="#" id="seconding" class="icon style2"><span class="label">미팅잡기</span></a></li>
+            </div>
+              <li><a href="#" id="thirding" class="icon style2"><span class="label">공유하기</span></a></li>
+            </ul>
+          </section>
+      </section>
+
+
+
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAiRcAHkazePts1sn8LaEjf5XLCh1Et2cU",
+    authDomain: "web-termproject-1.firebaseapp.com",
+    databaseURL: "https://web-termproject-1.firebaseio.com",
+    projectId: "web-termproject-1",
+    storageBucket: "",
+    messagingSenderId: "3874542295"
+  };
+  firebase.initializeApp(config);
+  // Get a reference to the database service
+  var database = firebase.database();
+
+
+  $(window).ready(function() {
+        var ref = firebase.database().ref('type');
+        ref.once('value').then(function(snapshot) {
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              authdata = user;
+              document.getElementById('login_logout').setAttribute("onclick", "logout()");
+              document.getElementById('signup_hi').innerHTML = authdata.email + "님 환영합니다.";
+              document.getElementById('signup_hi').href = "";
+              document.getElementById('login_logout').innerHTML = "로그아웃";
+            }
+            else {
+             authdata = null;
+             alert("로그인이 필요합니다");
+             location.href="index.html";
+            }
+          });
+        });
+      });
+
+
+</script>
+  <!-- <script>
+
+
+
+
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB5Aji_Ysf6EsI_6cR4kDs3yi9s0bjo9_k",
+      authDomain: "andu-3f6db.firebaseapp.com",
+      databaseURL: "https://andu-3f6db.firebaseio.com",
+      projectId: "andu-3f6db",
+      storageBucket: "andu-3f6db.appspot.com",
+      messagingSenderId: "799401536592"
+    };
+    firebase.initializeApp(config);
+    // Get a reference to the database service
+    var database = firebase.database();
+    // Get a reference to the storage service, which is used to create references in your storage bucket
+    var storage = firebase.storage();
+    var storageRef;
+    var authData;
+    $(window).ready(function() {
+      var ref = firebase.database().ref('type');
+      ref.once('value').then(function(snapshot) {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            authdata = user;
+            document.getElementById('login_logout').setAttribute("onclick", "logout()");
+            document.getElementById('signup_hi').innerHTML = authdata.email + "님 환영합니다.";
+            document.getElementById('signup_hi').href = "";
+            document.getElementById('login_logout').innerHTML = "로그아웃";
+          }
+          else {
+           authdata = null;
+           alert("로그인이 필요합니다");
+           location.href="index.html";
+          }
+        });
+      });
+    });
+    firebase.auth().onAuthStateChanged(function(user) {
+      authData = user;
+      storageRef = storage.ref(user.uid);
+      if (user) {
+        authdata = user;
+        document.getElementById('signup_hi').innerHTML = authdata.email + "님 환영합니다.";
+        document.getElementById('login_logout').innerHTML = "로그아웃";
+        document.getElementById('login_logout').setAttribute("onclick", "logout()");
+      }
+      if(authData != null) {
+        var ref = database.ref('users/provider/' + authData.uid + "/info");
+        ref.once('value').then(function(snapshot) {
+          if(snapshot.val() != null) {
+            var val = snapshot.val();
+            var input = document.getElementsByClassName('infoInput');
+            input[0].value = val.name;
+            input[1].value = val.purpose;
+            input[2].value = val.around;
+            input[3].value = val.address;
+            input[4].value = val.notice;
+            input[5].value = val.facilities;
+            input[6].value = val.time;
+            input[7].value = val.introduce;
+            input[8].value = val.etc;
+          }
+        });
+      }
+    });
+    // Create a root reference
+    function fileUpLoad(){
+      var placeInfo = document.getElementsByClassName("infoInput");
+      var userRef = database.ref('users/provider/' + authData.uid + "/info");
+      userRef.set({
+        name: placeInfo[0].value,
+        purpose: placeInfo[1].value,
+        around: placeInfo[2].value,
+        address: placeInfo[3].value,
+        notice: placeInfo[4].value,
+        facilities: placeInfo[5].value,
+        time: placeInfo[6].value,
+        introduce: placeInfo[7].value,
+        etc: placeInfo[8].value
+      });
+      // 여러개의 파일 넣기
+      for (var i = 0; i < upload.files.length; i++) {
+        var file = upload.files[i];
+        var uploadTask = storageRef.child("image"+i).put(file);
+      }
+      // Listen for state changes, errors, and completion of the upload.
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+        function(snapshot) {
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log('Upload is running');
+              break;
+          }
+        }, function(error) {
+        switch (error.code) {
+          case 'storage/unauthorized':
+            // User doesn't have permission to access the object
+            break;
+          case 'storage/canceled':
+            // User canceled the upload
+            break;
+          case 'storage/unknown':
+            // Unknown error occurred, inspect error.serverResponse
+            break;
+        }
+      }, function() {
+        // Upload completed successfully, now we can get the download URL
+        // var downloadURL = uploadTask.snapshot.downloadURL;
+        // document.getElementsByClassName("col-form-label").innerHTML = downloadURL;
+        alert("정보 저장 완료!");
+      });
+    }
+  </script>
+
+  <script>
+
+
+
+
+    var upload = document.getElementById('file');
+    var holder = document.getElementById('holder');
+    var state = document.getElementById('status');
+    // 상태검사
+    if (typeof window.FileReader === 'undefined') {
+      state.className = 'fail';
+    } else {
+      state.className = 'success';
+    }
+    // 새로운 파일을 추가하여 바뀌었을 때
+    upload.onchange = function (e) {
+      e.preventDefault();
+      holder.innerHTML='';
+      // 최대 8개까지의 파일을 화면에 띄워준다.
+      for (var i = 0; i < upload.files.length && i <8; i++) {
+        var file = upload.files[i];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          var img = new Image();
+          img.src = event.target.result;
+          holder.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      }
+      return false;
+    };
+    function logout(){
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        alert("로그아웃 되었습니다.");
+        location.href="index.html";
+      }, function(error) {
+        alert(error);
+        // An error happened.
+      });
+    }
+    </script> -->
+</html>

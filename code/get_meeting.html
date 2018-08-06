@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./else.css" type="text/css">
+  <link rel="shortcut icon" href="./favicon-2.ico">
+       <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="//www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+        <script src="../firebase/init.js"></script>
+        <script src="./index.js"></script>
+<title>OOU로 함께 모이자!</title>
+</head>
+<body>
+    <!--header-->
+    <header>
+      <div class="d-fullHeader">
+        <!--sing-in button -->
+        <button type="button" class="d-secondaryButton" id="sign-button">
+           <div>
+               <a href="./login.html"  id="sign-in">sign in</a>
+           </div>
+       </button>
+         <!--log-in button -->
+       <button type="button" class="d-secondaryButton" id="log-button">
+          <div>
+            <a class="insert" id="log-in" href="./login-2.html">log in</a>
+          </div>
+      </button>
+            <button type="button" class="d-secondaryButton" id="logout-button">
+          <div>
+            <a id="log-out" onclick="signOut()">log out</a>
+          </div>
+      </button>
+      </div>
+      </header>
+      <!--main section -->
+      <section id="main">
+        <section id="center" class="input_form">
+        <div class="container-contact100" >
+          <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+              <span class="avatar">
+                <h1>Step 2. 미팅 정보 등록</h1>
+              </span>
+               <!-- 미팅 이름 적는 div -->
+              <div class="wrap-input100" >
+                <input class="input100" id="name" type="text" name="name" placeholder="Meeting">
+                <label class="label-input100" for="name">
+                  <span class="lnr lnr-user"></span>
+                </label>
+              </div>
+
+               <!-- 이메일 칸 적는 div -->
+              <div class="wrap-input100">
+                <input class="input100" id="email" type="text" name="email" placeholder="Email">
+                <label class="label-input100" for="email">
+                  <span class="lnr lnr-envelope"></span>
+                </label>
+              </div>
+              
+ 			<!--  폰 번호 적는 div -->
+              <div class="wrap-input100">
+                <input class="input100" id="phone" type="text" name="phone" placeholder="Phone">
+                <label class="label-input100" for="phone">
+                  <span class="lnr lnr-phone-handset"></span>
+                </label>
+              </div>
+              
+			<!--메시지 적는 div -->
+              <div class="wrap-input100">
+                <textarea class="input100" id="mes" name="message" placeholder="Your message..."></textarea>
+              </div>
+
+              <button type="button" class="d-secondaryButton" id="schedule-button">
+                 <div>
+                   <a id="schedule"  onclick="writeUserData()">스케쥴 등록</a>
+                 </div>
+              </button>
+
+              <button type="button" class="d-secondaryButton" id="continue-button">
+                 <div>
+                   <a id="continue" onclick="backing()">Back</a>
+                 </div>
+             </button>
+
+            </form>
+          </div>
+        </div>
+      </section>
+        </section>
+
+</body>
+</html>

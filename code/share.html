@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="./else.css">
+  <link rel="shortcut icon" href="./favicon-2.ico">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+<title>KakaoLink Demo(Web Button) - Kakao JavaScript SDK</title>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+</head>
+<title>OOU로 함께 모이자!</title>
+</head>
+<body>
+
+	<header>
+		<div class="d-fullHeader">
+			<!--sing-in button -->
+			<button type="button" class="d-secondaryButton" id="sign-button">
+				<div>
+					<a href="./login.html" id="sign-in">sign in</a>
+				</div>
+			</button>
+			<!--log-in button -->
+			<button type="button" class="d-secondaryButton" id="log-button">
+				<div>
+					<a id="log-in" href="./login-2.html">log in</a>
+				</div>
+			</button>
+			 <!--log-out button -->
+			<button type="button" class="d-secondaryButton" id="logout-button">
+				<div>
+					<a id="log-out" onclick="signOut()">log out</a>
+				</div>
+			</button>
+		</div>
+	</header>
+	<!--main section -->
+	<section id="main">
+		<section id="center" class="input_form">
+			<div class="container-contact100">
+				<div class="wrap-contact100">
+					<form class="contact100-form validate-form">
+						<span class="avatar">
+							<h1>Step 3. 공유하기</h1>
+						</span>
+				 <!--meeting 이름 적는 div-->
+						<div class="wrap-input100">
+							<input class="input100" id="sharing" type="text" name="name"
+								placeholder="Meeting"> <label class="label-input100"
+								for="name"> <span class="lnr lnr-user"></span>
+							</label>
+						</div>
+					 <!--email 적는 div-->
+						<div class="wrap-input100" id="final-result">
+							<div class="input100" id="email" name="email" placeholder="Email"></div>
+							<label class="label-input100" for="email"> <span
+								class="lnr lnr-envelope"></span>
+							</label>
+						</div>
+				 <!--result button-->
+						<button type="button" class="d-secondaryButton"
+							id="schedule-button">
+							<div>
+								<a id="schedule" onclick="getUserData()">When?</a>
+							</div>
+						</button>
+ 					<!--back button-->
+						<button type="button" class="d-secondaryButton"
+							id="continue-button">
+							<div>
+								<a id="continue" onclick="backing()">Back</a>
+							</div>
+						</button>
+
+					</form>
+				</div>
+			</div>
+		<!--kakao 톡 공유에 대한div-->
+			<h6>카카오톡 링크는 카카오톡 앱이 설치되어 있는 모바일 기기에서만 전송 가능합니다.</h6>
+			<a href="javascript:;" id="kakao-link-btn"> <!-- 버튼이 생기는 부분 -->
+				<img
+				src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+				<!-- 톡 이미지 부분   -->
+			</a>
+		</section>
+	</section>
+	<script type="text/javascript">
+		//<![CDATA[
+		// // 사용할 앱의 JavaScript 키를 설정해 주세요.
+		Kakao.init('8d6e01453b87a04e01c5d4bea34249d8');
+		// // 카카오링크 버튼을 생성합니다. 
+		Kakao.Link
+				.createDefaultButton({
+					container : '#kakao-link-btn', // 컨테이너는 아까 위에 버튼이 쓰여진 부분 id 
+					objectType : 'feed',
+					content : { // 여기부터 실제 내용이 들어갑니다. 
+						title : '미팅날짜는?', // 본문 제목
+						description : 'OOU로 모이자!', // 본문 바로 아래 들어가는 영역?
+						imageUrl : './main.png', // 이미지
+						link : {
+							mobileWebUrl : 'https://developers.kakao.com',
+							webUrl : 'https://developers.kakao.com'
+						}
+					},
+					social : { 
+						likeCount : 286,
+						commentCount : 45,
+						sharedCount : 845
+					},
+					buttons : [ {
+						title : '웹으로 보기',
+						link : {
+							mobileWebUrl : 'https://developers.kakao.com',
+							webUrl : 'https://developers.kakao.com'
+						}
+					}, {
+						title : '앱으로 보기',
+						link : {
+							mobileWebUrl : 'https://developers.kakao.com',
+							webUrl : 'https://developers.kakao.com'
+						}
+					} ]
+				});
+		//]]>
+	</script>
+
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<script src="../firebase/init.js"></script>
+	<script src="./index.js"></script>
+
+
+</body>
+</html>
